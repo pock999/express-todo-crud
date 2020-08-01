@@ -1,0 +1,9 @@
+<%- include('_base'); -%>
+<div class="container">
+    <h1><%= title %></h1>
+    <form action="/update/<%= id %>" method="POST">
+        <h2>ID: <%= id %></h2>
+        <input class="form-control" type="text" name="item" value="<%= item %>">
+        <button type="submit" class="btn btn-primary mb-2">更新</button>
+    </form>
+</div>

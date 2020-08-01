@@ -1,0 +1,33 @@
+<%- include('_base'); -%>
+<div class="container">
+    <h1><%= title %></h1>
+    <form class="form-inline"  method="POST" action="/todo">
+        <input class="form-control" type="text" placeholder="新增項目" name="newItem">
+        <button type="submit" class="btn btn-primary mb-2">新增</button>
+    </form>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">項目</th>
+                <th scope="col">操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for(let i = 0; i < todos.length ; i++) {%>
+                <tr>
+                    <th scope="row"><%= todos[i].id %></th>
+                    <td><%= todos[i].title %></td>
+                    <th scope="col">
+                        <a class="btn btn-danger" href="/delete/<%= todos[i].id %>">
+                            刪除
+                        </a>
+                        <a class="btn btn-primary" href="/edit/<%= todos[i].id %>">
+                            編輯
+                        </a>
+                    </th>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+</div>
