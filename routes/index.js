@@ -19,12 +19,8 @@ router.get('/todo', async (req, res, next) => {
 });
 
 router.post('/todo', async (req, res, next) => {
-  const resData = {};
-  resData['title'] = 'TODO_CRUD';
   await Todo.create({ title: req.body.newItem });
-  const currentTodos = await Todo.findAll();
-  resData['todos'] = currentTodos;
-  res.render('todos', resData);
+  res.redirect('/todo');
 });
 
 router.get('/delete/:id', async(req, res, next) => {
@@ -33,11 +29,7 @@ router.get('/delete/:id', async(req, res, next) => {
       id: req.params.id,
     }
   });
-  const resData = {};
-  resData['title'] = 'TODO_CRUD';
-  const currentTodos = await Todo.findAll();
-  resData['todos'] = currentTodos;
-  res.render('todos', resData);
+  res.redirect('/todo');
 });
 
 router.get('/edit/:id', async(req, res, next) => {
@@ -63,11 +55,7 @@ router.post('/update/:id', async(req, res, next) => {
   await item.update({
     title: req.body.item,
   });
-  const resData = {};
-  resData['title'] = 'TODO_CRUD';
-  const currentTodos = await Todo.findAll();
-  resData['todos'] = currentTodos;
-  res.render('todos', resData);
+  res.redirect('/todo');
 });
 
 module.exports = router;
